@@ -1,0 +1,206 @@
+body {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.clueExpansionBox {
+  height: 40px;
+  background-color: rgb(176, 176, 245);
+  width: 100%;
+}
+
+.crosswordGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  background-color: black;
+  max-width: 600px;
+  max-height: 600px;
+  min-height: 600px;
+  width: 600px;
+}
+
+.crosswordCell {
+  display: inline-table;
+  background-color: black;
+  background-color: yellow;
+  min-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  padding: none;
+  text-transform: capitalize;
+}
+
+.clueNumberInCell {
+  color: black;
+  background-color: white;
+  position: relative;
+  font-size: x-small;
+  position: fixed;
+  margin: 3px;
+  z-index: 200;
+}
+
+input {
+  padding: 0em;
+  text-align: center;
+  font-size: 1.3em;
+  text-transform: capitalize;
+  font-family: "Austin News Deck Semibold";
+  color: #072f50;
+  -webkit-border-radius: 0;
+  max-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+  position: relative;
+  top: 0px;
+  z-index: 100;
+}
+
+input:focus {
+  outline: none;
+  background-color: burlywood;
+  text-transform: capitalize;
+}
+
+.xNumberInCell {
+  color: black;
+  background-color: white;
+  position: relative;
+  font-size: x-small;
+
+  display: none;
+}
+
+.yNumberInCell {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  font-size: x-small;
+  display: none;
+}
+
+span {
+  color: black;
+  /* background-color: white; */
+  position: relative;
+  font-size: 22px;
+}
+
+.cluesBox {
+  background-color: #e1fcfd;
+  border: thin solid;
+  min-width: 300px;
+  max-width: 360px;
+  max-height: 600px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  padding-left: 1em;
+}
+
+.clueDirectionDiv {}
+
+.clueDirection h1 {
+  margin-left: 0px;
+  margin-top: 0px;
+  position: fixed;
+  width: 90%;
+  background-color: white;
+  z-index: 501;
+}
+
+.individualClueBox {
+  background-color: #e1fcfd;
+  /* border: thin solid; */
+  width: 90%;
+  /* min-height: 100px; */
+  margin-bottom: 1em;
+  margin-left: 1em;
+  /* padding: (2em, 2em, 2em, 4em); */
+}
+
+.individualClueBox:first-of-type {
+  margin-top: 80px;
+}
+
+.clueText {
+  color:black;
+}
+
+.clueNumber {
+  /* margin-right: 2%; */
+  margin-right: 2%;
+  /* padding-right: 5em;*/
+}
+
+.consoleBox {
+  min-height: 25px;
+  height: 25px;
+  color: black;
+  min-width: 200px;
+  font-size: 80%;
+  font-size-adjust: auto;
+  background-color: white;
+  padding-right: 1em;
+}
+
+#cb01 {
+  background-color: rgb(87, 85, 85);
+}
+
+#cursorPositionCounter {
+  height: 30px;
+  background-color: yellowgreen;
+  color: red;
+}
+
+#cb03 {
+  background-color: peachpuff;
+}
+
+#cb04 {
+  background-color: goldenrod;
+}
+
+#cb05 {
+  background-color: salmon;
+}
+
+#cb06 {
+  background-color: honeydew;
+}
+
+#cb07 {
+  background-color: olive;
+}
+
+#cb08 {
+  background-color: lightcoral;
+}
+
+#cb09 {
+  background-color: wheat;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

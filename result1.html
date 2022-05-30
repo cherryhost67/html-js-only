@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <link rel="stylesheet" type="text/css" href="crossword.css">
+   <title></title>
+</head>
+
+<body bgcolor="black" onload="" style="display:inline-flex;flex-wrap:wrap;">
+   <div class="messageBoxHolder" id="messageBox"><span class="consoleBox" id="codePos">CodePosition = </span><span
+         class="consoleBox" id="inputCellNo">userClick Cell No. Cols = </span><span class="consoleBox"
+         id="altInputCellNo">userClick Cell No. Rows = </span><span class="consoleBox"
+         id="cursorPositionCounter">cursorPosInAns = </span><span class="consoleBox" id="cellCounter">iterations =
+      </span><span class="consoleBox" id="wantedClueNumberDisplay">Req Clue = </span><span class="consoleBox"
+         id="acrossOrDownResult"></span><span class="consoleBox" id="lengthOfAcrossAnswerDisplay">Length Across Answer =
+      </span><span class="consoleBox" id="lengthOfDownAnswerDisplay">Length Down Answer = </span><span
+         class="consoleBox" id="trafficLightDisplay">traffic light = </span><button>Submit</button><button>Save</button>
+   </div>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script src="../scripts/crossword/variables.js"></script>
+   <script src="../scripts/crossword/localJQuery-2.1.js"></script>
+   <script src="../scripts/crossword/userKeyPress.js"></script>
+   <script src="../scripts/javascript/js_functions.js"></script>
+   <div class="clueExpansionBox"></div>
+   <div class="crosswordGrid" id="crosswordGrid"
+      style="display:flex;flex-direction:column;justify-content:flex-start;    flex-wrap:wrap;flex-basis:100%;background-color:black;           max-width:600px;max-height:600px;min-height:600px;width:600px;">
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">1</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">10</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">12</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">15</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">G</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">19</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">22</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">B</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">B</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">25</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">28</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">1</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">2</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">2</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">20</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">F</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">M</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">3</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">3</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">16</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">4</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">F</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">23</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">5</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">4</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">13</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">Y</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">6</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">Y</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">H</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">M</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">26</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">7</span><span class="solution" style="display:none;">K</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">9</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">11</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">8</span><span class="solution" style="display:none;">K</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">5</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">K</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">B</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">27</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">29</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">9</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">M</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">14</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">G</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">Y</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">24</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">10</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">6</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">B</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">W</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">F</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">11</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">17</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">21</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">B</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">R</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">12</span><span class="solution" style="display:none;">O</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">7</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">H</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">M</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">D</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">13</span><span class="solution" style="display:none;">U</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">I</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">N</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">18</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">8</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">P</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">L</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">10</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">12</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">14</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">14</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell">8</span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">1</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">2</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">C</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">3</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">4</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">T</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">5</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">6</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">S</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">7</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">Y</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">9</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">11</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">A</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">13</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">E</span></div>
+      <div class="crosswordCell" tabindex="-1"
+         style="background-color:black;      min-width:40px;min-height:40px;max-height:40px;max-width:40px;"><span
+            class="yNumberInCell">0</span><span class="xNumberInCell">0</span></div>
+      <div class="crosswordCell"
+         style="background-color:yellow;  min-width:40px;min-height:40px;max-height:40px;max-width:40px;padding:none;text-transform:capitalize;">
+         <span class="clueNumberInCell"></span><input class="letterInput" type="text" maxlength="1" size="1" value=""
+            tabindex="-1" name="" oninput=""><span class="yNumberInCell">15</span><span
+            class="xNumberInCell">15</span><span class="solution" style="display:none;">E</span></div>
+   </div>
+   <div class="cluesBox" style="" id="d11aBbl">
+      <div class="clueDirectionDiv">
+         <h1 class="clueDirection">
+            Across
+         </h1>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblD">1</span><span class="clueText">Head of class
+            at one time before pint. That's an idea.</span><span>(</span><span
+            class="answerLength">7</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblF">9</span><span class="clueText">Medics to
+            rebuild household.</span><span>(</span><span class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblH">10</span><span class="clueText">Arouse small
+            fish for cooking method</span><span>(</span><span class="answerLength">4,3</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblJ">11</span><span class="clueText">Endless St.
+            Etienne mixed feeling</span><span>(</span><span class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblL">12</span><span class="clueText">Working
+            after warm night cap for silk case</span><span>(</span><span class="answerLength">6</span><span>)</span>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblN">13</span><span class="clueText">He joined
+            monks and relieved some pressure to find counselor</span><span>(</span><span
+            class="answerLength">10</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblP">15</span><span class="clueText">Unwanted
+            type of stones, we hear, of France</span><span>(</span><span class="answerLength">4</span><span>)</span>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblR">16</span><span class="clueText">Boy from
+            Brazil, prehaps. Left after front of boat creates summer food vessel?</span><span>(</span><span
+            class="answerLength">5,4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblT">21</span><span class="clueText">The french
+            after passport, for example - do nothing</span><span>(</span><span
+            class="answerLength">4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblV">22</span><span class="clueText">Old boy army
+            shaken for tipple.</span><span>(</span><span class="answerLength">6,4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblX">24</span><span class="clueText">CIA far
+            flung for large area.</span><span>(</span><span class="answerLength">6</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblZ">25</span><span class="clueText">Horizon made
+            from ashes, maybe?</span><span>(</span><span class="answerLength">4,4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblAB">27</span><span class="clueText">Positioned.
+            Late for public display, it's heard</span><span>(</span><span class="answerLength">7</span><span>)</span>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblAD">28</span><span class="clueText">No hope,
+            for late avoiding action</span><span>(</span><span class="answerLength">4,4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBblAF">29</span><span class="clueText">Advocate
+            using sixth sense on river.</span><span>(</span><span class="answerLength">7</span><span>)</span></div>
+   </div>
+   <div class="cluesBox" style="" id="d11aBbn">
+      <div class="clueDirectionDiv">
+         <h1 class="clueDirection">
+            Down
+         </h1>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnD">2</span><span class="clueText">Gemstone
+            holding it back and working, it's not compulsory.</span><span>(</span><span
+            class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnF">3</span><span class="clueText">Bones in
+            hand, say, for vehicle sharing?</span><span>(</span><span class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnH">4</span><span
+            class="clueText">Characteristic of father, mother and friend</span><span>(</span><span
+            class="answerLength">10</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnJ">5</span><span class="clueText">Prod from
+            short game of cards</span><span>(</span><span class="answerLength">4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnL">6</span><span class="clueText">Travel in
+            high speed elevator and be quiet</span><span>(</span><span class="answerLength">4,2</span><span>)</span>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnN">7</span><span class="clueText">No small
+            thing to write dissertation in the morning. Don't beleive it.</span><span>(</span><span
+            class="answerLength">7</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnP">8</span><span class="clueText">Ms. Berry sat
+            scene out holding back for intense joy.</span><span>(</span><span
+            class="answerLength">7</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnR">11</span><span class="clueText">Quickly
+            become old fashioned on one of these.</span><span>(</span><span
+            class="answerLength">5,4</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnT">14</span><span class="clueText">In the past
+            with US city and relatives, who give good advise.</span><span>(</span><span
+            class="answerLength">5,5</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnV">17</span><span class="clueText">Aquatic
+            mammal returns after political party produces script</span><span>(</span><span
+            class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnX">18</span><span class="clueText">Clasp Tea
+            brew to appease</span><span>(</span><span class="answerLength">8</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnZ">19</span><span class="clueText">End of game
+            with two bishops and correction reversed for outward flow</span><span>(</span><span
+            class="answerLength">7</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnAB">20</span><span class="clueText">Boxer
+            George looks after hands</span><span>(</span><span class="answerLength">7</span><span>)</span></div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnAD">23</span><span class="clueText">Mislead.
+            Cool guy that takes in the spanish.</span><span>(</span><span class="answerLength">6</span><span>)</span>
+      </div>
+      <div class="individualClueBox"><span class="clueNumber" id="d11aBbnAF">26</span><span class="clueText">Winning
+            margin and place for a tie!</span><span>(</span><span class="answerLength">4</span><span>)</span></div>
+   </div>
+</body>
+
+</html>
